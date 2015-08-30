@@ -16,23 +16,25 @@ the [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv) plugin installe
 1. Checkout Flask-Stack where you want it installed.
     ```bash
     $ git clone https://github.com/LiamKeene/Flask-Stack ~/projects/my-project
+    $ cd ~/projects/my-project
     ```
 
 2. Rename instances of `appname` to `my_project`.
     In future I hope to have this templated or similar.
     ```bash
+    $ mv appname my-project
     $ find . -type f -name "*.py*" -exec sed -i 's/appname/my_project/g' {} +
     ```
-    **Note** the underscore in `my_project`.  The hyphen looks better as a filename
-    (personal preference), but Python will need underscores for imports, etc.
+    **Note** the underscore in `my_project` in the find/sed command.  The 
+    hyphen looks better as a directory name (personal preference), but Python 
+    will need underscores for imports, etc.
 
-3. Create the virtual environment for your project and activate it.
-    This assumes you have already installed Python 2.7.10 via pyenv.  See 
-    [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv) for detailed
-    instructions.
+3. Create the virtual environment for your project and set it as the virtualenv
+    for this project.  This assumes you have already installed Python 2.7.10 via pyenv.  
+    See [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv) for detailed instructions.
     ```bash
     $ pyenv virtualenv 2.7.10 my-project-env
-    $ pyenv activate my-project-env
+    $ pyenv local my-project-env
     ``` 
 
 4. Install required packages.
@@ -42,13 +44,17 @@ the [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv) plugin installe
 
 5. Check all tests pass.
     ```bash
-    $ cd ~/projects/my-project
     $ py.test -v
     ```
 
-6. Hack away!
+6. Run the debug server.
+    ```bash
+    $ python run.py
+    ```
 
-7. (Optional) Configuration of Apache/mod_wsgi server.
+7. Hack away!
+
+8. (Optional) Configuration of Apache/mod_wsgi server.
     Will update this for more detailed information for pushing to a git 
     server, checking out code to a work-tree for live/dev/testing purposes.  
     If all that is done, the Apache httpd.conf will need these lines.
