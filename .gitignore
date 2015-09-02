@@ -1,0 +1,24 @@
+# For storing ideas (!) and assets/docs I don't want to add to repo
+.idea
+
+# File manager stuff
+.hidden
+.directory
+
+# Pyenv and Rbenv
+.python-version
+.ruby-version
+
+# Python byte-code
+*.pyc
+__pycache__
+
+# Databases
+*.db
+
+# Compiled and minified CSS/JSshould not be version controlled
+*.css
+*.min.css
+*.css.map
+.sass-cache
+.webassets-cache
